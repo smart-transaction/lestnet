@@ -7,6 +7,9 @@ RUN DEBIAN_FRONTEND=noninteractive \
  
 USER root
 
+RUN apt-get update
+RUN apt-get install -y ca-certificates
+
 COPY ./op-node .
 COPY ./jwt.txt .
 COPY ./rollup.json .

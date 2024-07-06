@@ -87,13 +87,14 @@ pushd optimism_clones/optimism/packages/contracts-bedrock
 popd
 
 # Patch with proxies
-echo_stage "Generate config file"
+echo_stage "Patch with proxies"
 DEPLOYMENTS_DIR="optimism_clones/optimism/packages/contracts-bedrock/deployments/getting-started"
 rm -rf ${DEPLOYMENTS_DIR}
 cp -a getting-started-patch ${DEPLOYMENTS_DIR}
 
 # Generate genesis files
 pushd optimism_clones/optimism/op-node
+echo_stage "Generate genesis file"
 go run cmd/main.go genesis l2 \
   --deploy-config ../packages/contracts-bedrock/deploy-config/getting-started.json \
   --l1-deployments ../packages/contracts-bedrock/deployments/getting-started/.deploy \
@@ -117,7 +118,6 @@ CLOUD_REGION="us-central1"
 PROJECT_NAME="delta-exchange-427816-f1"  # Lestnet project
 LESTNET_VERSION="0.1"
 
-# Build docker images
 echo_stage "Build op-geth docker image"
 pushd docker/op-geth
 cp ../../optimism_clones/op-geth/build/bin/geth .
