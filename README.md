@@ -2,13 +2,19 @@
 
 ## Build and Deploy
 
+### Build on Local Workstation
+
 [!IMPORTANT] Currently the build is to be done on Linux machine only due to geth build process. Currently it doesn't support cross platform build.
 
 To build Docker images:
 1.  Install Docker on your workstation, https://docs.docker.com/engine/install/
-2.  Run the script ./build_images.sh
+1.  Make sure that the necessary software installed, check at https://docs.optimism.io/builders/chain-operators/tutorials/create-l2-rollup#software-dependencies
+1.  Run the script `./build_images.sh tutorials/chain`
 
-To deploy:
+### Build on Google Cloud Machine (recommended)
+
+### Deploy
+
 1.  Install gcloud CLI on your workstation, https://cloud.google.com/sdk/docs/install
 1.  Log into gcloud, https://cloud.google.com/sdk/gcloud/reference/auth/login
 1.  Copy scripts install_docker.sh and deploy.sh on the gcloud vm "lestnetserver", into the home directory (there are different ways, not described here)

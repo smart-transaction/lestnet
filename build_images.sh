@@ -42,6 +42,14 @@ export GS_BATCHER_ADDRESS=0x44864Bdda3C02845787e0E10C8455556Cd0b6ff5
 export GS_PROPOSER_ADDRESS=0x8AB2032dF58ba3eC04a173fc1B76e930D8291fA7
 export GS_SEQUENCER_ADDRESS=0xc78Af82ECD90d8A08Fef3bec2C920f4719B40742
 
+# L1 chain information
+export L1_CHAIN_ID=11155111
+export L1_BLOCK_TIME=12
+
+# L2 chain information
+export L2_CHAIN_ID=42069
+export L2_BLOCK_TIME=2
+
 # Clone repositories
 echo_stage "Clone repositories"
 mkdir -p optimism_clones
