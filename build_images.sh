@@ -42,10 +42,6 @@ export GS_BATCHER_ADDRESS=0x44864Bdda3C02845787e0E10C8455556Cd0b6ff5
 export GS_PROPOSER_ADDRESS=0x8AB2032dF58ba3eC04a173fc1B76e930D8291fA7
 export GS_SEQUENCER_ADDRESS=0xc78Af82ECD90d8A08Fef3bec2C920f4719B40742
 
-# Go build environment, building for Linux
-export TARGETOS="linux"
-export TARGETARCH="amd64"
-
 # Clone repositories
 echo_stage "Clone repositories"
 mkdir -p optimism_clones
@@ -115,15 +111,6 @@ LESTNET_VERSION="0.1"
 
 # Build docker images
 echo_stage "Build op-geth docker image"
-# Requires go-geth rebuild for Linux.
-# A hack with hardcoded versions. Requires a consistent approach, maybe build insode Docker image.
-pushd optimism_clones/op-geth
-export GOOS=${TARGETOS}
-export GOARCH=${TARGETARCH}
-go build -ldflags "-X github.com/ethereum/go-ethereum/internal/version.gitCommit=5e9cb8176cf953e09208ffca77c6c6ea7ee07015 -X github.com/ethereum/go-ethereum/internal/version.gitDate=20240614 -X github.com/ethereum/go-ethereum/params.gitTag=v1.101315.3-rc.1 -s" -tags urfave_cli_no_docs,ckzg -trimpath -v -o ./build/bin/geth ./cmd/geth
-export GOOS=
-export GOARCH=
-popd
 pushd docker/op-geth
 cp ../../optimism_clones/op-geth/build/bin/geth .
 cp -r ../../optimism_clones/op-geth/datadir ./datadir

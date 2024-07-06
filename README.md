@@ -2,6 +2,8 @@
 
 ## Build and Deploy
 
+[!IMPORTANT] Currently the build is to be done on Linux machine only due to geth build process. Currently it doesn't support cross platform build.
+
 To build Docker images:
 1.  Install Docker on your workstation, https://docs.docker.com/engine/install/
 2.  Run the script ./build_images.sh
