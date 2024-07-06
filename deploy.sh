@@ -8,7 +8,7 @@ function echo_stage() {
 }
 
 # Env variables
-LESTNET_SERVER_HOST="http://server.lestnet.org"
+LESTNET_SERVER_HOST="http://localhost"
 L1_RPC_URL="https://eth-sepolia.g.alchemy.com/v2/ICXxRS_FHofIsVaTe_LxtU9Uaqfxw8Rc"
 L1_RPC_KIND="alchemy"
 L2_OUTPUT_ORACLE_ADDRESS="0xc5F40E6F694DC18A4b6006b55f586b306F63a5bd"
