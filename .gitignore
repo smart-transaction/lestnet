@@ -1,1 +1,4 @@
 optimism_clones
+docker-compose.yml
+up.sh
+down.sh
