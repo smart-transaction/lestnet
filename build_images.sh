@@ -160,7 +160,7 @@ echo ""
 echo "Address of the L1StandardBridgeProxy contract: $(cat optimism_clones/optimism/packages/contracts-bedrock/deployments/getting-started/L1StandardBridgeProxy.json | jq -r .address)"
 echo ""
 echo "Address of the L2OutputOracleProxy: $(cat optimism_clones/optimism/packages/contracts-bedrock/deployments/getting-started/L2OutputOracleProxy.json | jq -r .address)"
-echo "Put this address into the depoly.sh script, assign it to the variable L2_OUTPUT_ORACLE_ADDRESS"
+echo "Put this address into the deploy.sh script, assign it to the variable L2_OUTPUT_ORACLE_ADDRESS"
 
 # Remove optimism repos copies
 rm -rf optimism_clones
