@@ -29,3 +29,6 @@ sudo docker run hello-world
 
 # Grant permissions for docker pull
 sudo chmod a+rw /var/run/docker.sock
+
+# Configure docker for using with gcloud
+gcloud auth configure-docker us-central1-docker.pkg.dev
