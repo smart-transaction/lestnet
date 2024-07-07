@@ -24,8 +24,8 @@ function build_docker() {
 
 # Params check
 if [[ "" == "$1" ]]; then
-  echo "Usage: ./build_image.sh <optimism_verified_branch>"
-  echo "Use the latest branch like op-contracts/vX.X.X"
+  echo "Usage: $0 <optimism_verified_branch>"
+  echo "Use the tutorial branch tutorials/chain or the latest branch like op-contracts/vX.X.X"
   exit 1
 fi
 
