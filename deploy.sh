@@ -53,44 +53,57 @@ NODE_DOCKER_IMAGE="${DOCKER_PREFIX}/op-node:${LESTNET_VERSION}"
 BATCHER_DOCKER_IMAGE="${DOCKER_PREFIX}/op-batcher:${LESTNET_VERSION}"
 PROPOSER_DOCKER_IMAGE="${DOCKER_PREFIX}/op-proposer:${LESTNET_VERSION}"
 
+OP_GETH_CONTAINER="op_geth"
+OP_NODE_CONTAINER="op_node"
+OP_BATCHER_CONTAINER="op_batcher"
+OP_PROPOSER_CONTAINER="op_container"
+
 # Create docker-compose.yml file.
 cat >docker-compose.yml << COMPOSE
 version: '3'
 
 services:
-  op_geth:
+  ${OP_GETH_CONTAINER}:
     container_name: op_geth
     image: ${GETH_DOCKER_IMAGE}
     ports:
       - 8545:8545
       - 8551:8551
 
-  op_node:
+  ${OP_NODE_CONTAINER}:
     container_name: op_node
     image: ${NODE_DOCKER_IMAGE}
+    depends_on:
+      - ${OP_GETH_CONTAINER}
     environment:
-      - LESTNET_SERVER_HOST=${LESTNET_SERVER_HOST}
+      - GETH_HOST=${OP_GETH_CONTAINER}
       - GS_SEQUENCER_PRIVATE_KEY=\${GS_SEQUENCER_PRIVATE_KEY}
       - L1_RPC_URL=${L1_RPC_URL}
       - L1_RPC_KIND=${L1_RPC_KIND}
     ports:
       - 8547:8547
 
-  op_batcher:
+  ${OP_BATCHER_CONTAINER}:
     container_name: op_batcher
     image: ${BATCHER_DOCKER_IMAGE}
+    depends_on:
+      - ${OP_GETH_CONTAINER}
+      - ${OP_NODE_CONTAINER}
     environment:
-      - LESTNET_SERVER_HOST=${LESTNET_SERVER_HOST}
+      - GETH_HOST=${OP_GETH_CONTAINER}
+      - NODE_HOST=${OP_NODE_CONTAINER}
       - GS_BATCHER_PRIVATE_KEY=\${GS_BATCHER_PRIVATE_KEY}
       - L1_RPC_URL=${L1_RPC_URL}
     ports:
       - 8548:8548
 
-  op_proposer:
+  ${OP_PROPOSER_CONTAINER}:
     container_name: op_proposer
     image: ${PROPOSER_DOCKER_IMAGE}
+    depends_on:
+      - ${OP_NODE_CONTAINER}
     environment:
-      - LESTNET_SERVER_HOST=${LESTNET_SERVER_HOST}
+      - NODE_HOST=${OP_NODE_CONTAINER}
       - GS_BATCHER_PRIVATE_KEY=\${GS_BATCHER_PRIVATE_KEY}
       - L1_RPC_URL=${L1_RPC_URL}
       - L2_OUTPUT_ORACLE_ADDRESS=${L2_OUTPUT_ORACLE_ADDRESS}
