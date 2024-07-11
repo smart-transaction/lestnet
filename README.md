@@ -7,13 +7,14 @@ All following commands are to be run from the `lestnetserver` SSH terminal.
 1.  ssh to the google cloud VM `lestnetserver`
 1.  Make sure that the necessary software installed, check at https://docs.optimism.io/builders/chain-operators/tutorials/create-l2-rollup#software-dependencies, install missing software
 1.  Log into gcloud from the `lestnetserver` SSH terminal, https://cloud.google.com/sdk/gcloud/reference/auth/login
-1.  Install docker, you need it just once 
-    ```
-    ./install_docker.sh
-    ```
 1.  Clone this repository
     ```
     git clone https://github.com/smart-transaction/lestnet.git
+    cd lestnet
+    ```
+1.  Install docker, you need it just once 
+    ```
+    ./install_docker.sh
     ```
 1.  Run the build script
     ```
