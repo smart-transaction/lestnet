@@ -66,6 +66,8 @@ services:
   ${OP_GETH_CONTAINER}:
     container_name: op_geth
     image: ${GETH_DOCKER_IMAGE}
+    environment:
+      - GETH_HOST=${OP_GETH_CONTAINER}
     ports:
       - 8545:8545
       - 8551:8551
