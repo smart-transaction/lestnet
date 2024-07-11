@@ -1,0 +1,13 @@
+diff --git a/node/defaults.go b/node/defaults.go
+index 307d9e186..58311eb48 100644
+--- a/node/defaults.go
++++ b/node/defaults.go
+@@ -45,7 +45,7 @@ const (
+ )
+ 
+ var (
+-	DefaultAuthCors    = []string{"localhost"} // Default cors domain for the authenticated apis
++	DefaultAuthCors    = []string{"*"} // Default cors domain for the authenticated apis
+ 	DefaultAuthVhosts  = []string{"localhost"} // Default virtual hosts for the authenticated apis
+ 	DefaultAuthOrigins = []string{"localhost"} // Default origins for the authenticated apis
+ 	DefaultAuthPrefix  = ""                    // Default prefix for the authenticated apis

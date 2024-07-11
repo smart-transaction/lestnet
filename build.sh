@@ -66,6 +66,12 @@ popd
 
 set -e
 
+# Apply custom patches
+echo_stage "Apply custom patches"
+pushd optimism_clones/op-geth
+patch -p1 < ../../patches/op-geth.patch
+popd
+
 # Build optimism binaries
 echo_stage "Build optimism binaries"
 pushd optimism_clones/optimism
