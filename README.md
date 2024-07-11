@@ -2,6 +2,8 @@
 
 ## Build and Deploy on Google Cloud Machine (recommended)
 
+All following commands are to be run from the `lestnetserver` SSH terminal.
+
 1.  ssh to the google cloud VM `lestnetserver`
 1.  Make sure that the necessary software installed, check at https://docs.optimism.io/builders/chain-operators/tutorials/create-l2-rollup#software-dependencies, install missing software
 1.  Log into gcloud, https://cloud.google.com/sdk/gcloud/reference/auth/login
@@ -42,6 +44,8 @@
     ```
 
 ### Deploy
+
+All following commands are to be run from the `lestnetserver` SSH terminal.
 
 1. ssh into the google cloud VM `lestnetserver`
 1.  Copy scripts install_docker.sh and deploy.sh on the gcloud vm "lestnetserver", into the home directory (there are different ways to copy files to gcloud VM, not described here)
