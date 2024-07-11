@@ -64,14 +64,6 @@ git clone https://github.com/ethereum-optimism/op-geth.git
 
 popd
 
-# Apply custom patches
-echo_stage "Apply custom patches"
-pushd optimism_clones/op-geth
-patch -f -p1 < ../../patches/op-geth.patch
-popd
-
-set -e
-
 # Build optimism binaries
 echo_stage "Build optimism binaries"
 pushd optimism_clones/optimism
@@ -138,6 +130,7 @@ pushd docker/op-node
 cp ../../optimism_clones/optimism/op-node/bin/op-node .
 cp ../../optimism_clones/optimism/op-node/jwt.txt .
 cp ../../optimism_clones/optimism/op-node/rollup.json .
+cp -r ../certificates ./
 build_docker ${CLOUD_REGION} ${PROJECT_NAME} "op-node" ${LESTNET_VERSION}
 rm -rf ./op-node ./jwt.txt ./rollup.json
 popd
@@ -145,6 +138,7 @@ popd
 echo_stage "Build op-batcher docker image"
 pushd docker/op-batcher
 cp ../../optimism_clones/optimism/op-batcher/bin/op-batcher .
+cp -r ../certificates ./
 build_docker ${CLOUD_REGION} ${PROJECT_NAME} "op-batcher" ${LESTNET_VERSION}
 rm -rf ./op-batcher
 popd
@@ -152,6 +146,7 @@ popd
 echo_stage "Build op-proposer docker image"
 pushd docker/op-proposer
 cp ../../optimism_clones/optimism/op-proposer/bin/op-proposer .
+cp -r ../certificates ./
 build_docker ${CLOUD_REGION} ${PROJECT_NAME} "op-proposer" ${LESTNET_VERSION}
 rm -rf ./op-proposer
 popd

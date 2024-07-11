@@ -7,7 +7,14 @@ RUN DEBIAN_FRONTEND=noninteractive \
 
 USER root
 
+RUN apt-get update
+RUN apt-get install -y ca-certificates
+
 COPY ./op-proposer .
+
+# Copy certificates to connect to the ethereum network
+COPY ./certificates/* /usr/local/share/ca-certificates/
+RUN update-ca-certificates
 
 EXPOSE 8560/tcp
 CMD "./op-proposer" "--poll-interval=12s" "--rpc.port=8560" "--rollup-rpc=http://${NODE_HOST}:8547" "--l2oo-address=${L2_OUTPUT_ORACLE_ADDRESS}" "--private-key=${GS_PROPOSER_PRIVATE_KEY}" "--l1-eth-rpc=${L1_RPC_URL}"
