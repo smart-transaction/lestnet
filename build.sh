@@ -64,13 +64,13 @@ git clone https://github.com/ethereum-optimism/op-geth.git
 
 popd
 
-set -e
-
 # Apply custom patches
 echo_stage "Apply custom patches"
 pushd optimism_clones/op-geth
-patch -p1 < ../../patches/op-geth.patch
+patch -f -p1 < ../../patches/op-geth.patch
 popd
+
+set -e
 
 # Build optimism binaries
 echo_stage "Build optimism binaries"
