@@ -48,7 +48,11 @@ All following commands are to be run from the `lestnetserver` SSH terminal.
 
 All following commands are to be run from the `lestnetserver` SSH terminal.
 
-1. ssh into the google cloud VM `lestnetserver`
+1.  ssh into the google cloud VM `lestnetserver`
 1.  Copy scripts install_docker.sh and deploy.sh on the gcloud vm "lestnetserver", into the home directory (there are different ways to copy files to gcloud VM, not described here)
 1.  Run ./install_docker.sh (only first time, no need to rerun at each deployment)
 2.  Run ./deploy.sh
+
+## Configure https and wss proxy
+
+The proxy configuration with certificates is located on the `lestnetserver` machine in the directory `/etc/nginx/conf.d`.
