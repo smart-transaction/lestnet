@@ -56,3 +56,13 @@ All following commands are to be run from the `lestnetserver` SSH terminal.
 ## Configure https and wss proxy
 
 The proxy configuration with certificates is located on the `lestnetserver` machine in the directory `/etc/nginx/conf.d`.
+
+## Connect with Metamask
+
+There is a connection data:
+
+```
+Name: Lestnet
+Address: https://lestnet.org
+Chain ID: 21363
+```
