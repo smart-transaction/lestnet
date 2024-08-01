@@ -68,6 +68,7 @@ services:
     image: ${GETH_DOCKER_IMAGE}
     ports:
       - 8545:8545
+      - 8546:8546
       - 8551:8551
 
   ${OP_NODE_CONTAINER}:
