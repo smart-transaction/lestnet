@@ -87,7 +87,7 @@ pushd optimism_clones/optimism/packages/contracts-bedrock
 popd
 
 # Patch with proxies
-echo_stage "Patch with proxies"
+echo_stage "Patch with proxies, L2 chain ID: ${L2_CHAIN_ID}"
 DEPLOYMENTS_DIR="optimism_clones/optimism/packages/contracts-bedrock/deployments/getting-started"
 rm -rf ${DEPLOYMENTS_DIR}
 cp -a getting-started-patch ${DEPLOYMENTS_DIR}
@@ -167,4 +167,4 @@ echo "Address of the L2OutputOracleProxy: $(cat optimism_clones/optimism/package
 echo "Put this address into the deploy.sh script, assign it to the variable L2_OUTPUT_ORACLE_ADDRESS"
 
 # Remove optimism repos copies
-# rm -rf optimism_clones
+rm -rf optimism_clones
