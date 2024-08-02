@@ -11,8 +11,10 @@ set -e
 
 # Cleanup previous installation
 echo_stage "Stop existing docker containers"
-docker ps -q | xargs docker kill
-docker ps -a -q | xargs docker rm
+RUNNING_CONTAINERS=$(docker ps -q)
+if [[ "" != ${RUNNING_CONTAINERS} ]]; then
+  docker kill ${RUNNING_CONTAINERS}
+fi
 
 # Remove blockscout directory
 echo_stage "Deleting existing blockscout copy"
