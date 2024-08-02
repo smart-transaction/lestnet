@@ -17,7 +17,7 @@ if [[ "" != ${RUNNING_CONTAINERS} ]]; then
 fi
 
 # Remove blockscout directory
-echo_stage "Deleting existing blockscout copy"
+echo_stage "Delete existing blockscout copy"
 test -d blockscout_clone && sudo rm -rf blockscout_clone
 
 # Clone blockscout repository
