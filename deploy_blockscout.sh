@@ -9,6 +9,13 @@ function echo_stage() {
 
 set -e
 
+# Cleanup previous installation
+docker ps -q | xargs docker kill
+docker ps -a -q | xargs docker rm
+
+# Remove blockscout directory
+test -f blockscout_clone && sudo rm -rf blockscout_clone
+
 # Clone blockscout repository
 echo_stage "Clone Blockscout Repository"
 mkdir -p blockscout_clone
@@ -27,6 +34,3 @@ echo_stage "Deploy Blockscout Docker Images"
 pushd blockscout_clone/blockscout/docker-compose
 sudo docker-compose up -d
 popd
-
-# Remove blockscout directory
-# sudo rm -rf blockscout_clone
