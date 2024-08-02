@@ -29,4 +29,4 @@ docker-compose up
 popd
 
 # Remove blockscout directory
-rm -rf blockscout_clone
+sudo rm -rf blockscout_clone
