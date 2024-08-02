@@ -18,14 +18,14 @@ popd
 
 # Apply config patches
 echo_stage "Apply Config Patches"
-cp blockscout-patch/common-blockscout.env.patch blockscout_clone/blockscout/docker-compose/envs/common-blockscout.env
-cp blockscout-patch/docker-compose.yml.patch blockscout_clone/blockscout/docker-compose/docker-compose.yml
-cp blockscout-patch/user-ops-indexer.yml.patch blockscout_clone/blockscout/docker-compose/services/user-ops-indexer.yml
+sudo cp blockscout-patch/common-blockscout.env.patch blockscout_clone/blockscout/docker-compose/envs/common-blockscout.env
+sudo cp blockscout-patch/docker-compose.yml.patch blockscout_clone/blockscout/docker-compose/docker-compose.yml
+sudo cp blockscout-patch/user-ops-indexer.yml.patch blockscout_clone/blockscout/docker-compose/services/user-ops-indexer.yml
 
 # Deploy docker images
 echo_stage "Deploy Blockscout Docker Images"
 pushd blockscout_clone/blockscout/docker-compose
-docker-compose up
+sudo docker-compose up
 popd
 
 # Remove blockscout directory
