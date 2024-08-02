@@ -69,11 +69,21 @@ Chain ID: 21363
 
 # Blockscout
 
-There is no need to biold Blockscout, it's deployed from original Docker images. We only need to customize some config parameters.
+There is no need to build Blockscout, it's deployed from original Docker images. We only need to customize some config parameters.
 
 ## Deploy Blockscout on Google Cloud Machine
 
-Run the deploy_blockscout.ch script.
-```
-./deploy_blockscout.sh
-```
+1.  ssh to the google cloud VM `lestnetserver`
+1.  Clone this repository
+    ```
+    git clone https://github.com/smart-transaction/lestnet.git
+    cd lestnet
+    ```
+1.  Install docker, you need it just once 
+    ```
+    ./install_docker.sh
+    ```
+1.  Run the deploy_blockscout.ch script.
+    ```
+    ./deploy_blockscout.sh
+    ```

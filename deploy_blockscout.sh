@@ -7,6 +7,8 @@ function echo_stage() {
   echo ""
 }
 
+set -e
+
 # Clone blockscout repository
 echo_stage "Clone Blockscout Repository"
 mkdir -p blockscout_clone
