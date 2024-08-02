@@ -25,8 +25,8 @@ sudo cp blockscout-patch/user-ops-indexer.yml.patch blockscout_clone/blockscout/
 # Deploy docker images
 echo_stage "Deploy Blockscout Docker Images"
 pushd blockscout_clone/blockscout/docker-compose
-docker-compose up -d
+sudo docker-compose up -d
 popd
 
 # Remove blockscout directory
-sudo rm -rf blockscout_clone
+# sudo rm -rf blockscout_clone
