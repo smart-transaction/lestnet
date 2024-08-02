@@ -66,3 +66,14 @@ Name: Lestnet
 Address: https://lestnet.org
 Chain ID: 21363
 ```
+
+# Blockscout
+
+There is no need to biold Blockscout, it's deployed from original Docker images. We only need to customize some config parameters.
+
+## Deploy Blockscout on Google Cloud Machine
+
+Run the deploy_blockscout.ch script.
+```
+./deploy_blockscout.sh
+```
