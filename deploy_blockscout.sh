@@ -18,7 +18,7 @@ fi
 
 # Remove blockscout directory
 echo_stage "Deleting existing blockscout copy"
-test -f blockscout_clone && sudo rm -rf blockscout_clone
+test -d blockscout_clone && sudo rm -rf blockscout_clone
 
 # Clone blockscout repository
 echo_stage "Clone Blockscout Repository"
