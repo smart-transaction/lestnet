@@ -10,10 +10,12 @@ function echo_stage() {
 set -e
 
 # Cleanup previous installation
+echo_stage "Stop existing docker containers"
 docker ps -q | xargs docker kill
 docker ps -a -q | xargs docker rm
 
 # Remove blockscout directory
+echo_stage "Deleting existing blockscout copy"
 test -f blockscout_clone && sudo rm -rf blockscout_clone
 
 # Clone blockscout repository
