@@ -169,4 +169,4 @@ echo "Address of the L2OutputOracleProxy: $(cat optimism_clones/optimism/package
 echo "Put this address into the deploy.sh script, assign it to the variable L2_OUTPUT_ORACLE_ADDRESS"
 
 # Remove optimism repos copies
-rm -rf optimism_clones
+# rm -rf optimism_clones
