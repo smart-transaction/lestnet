@@ -43,7 +43,7 @@ config=$(cat << EOL
   "channelTimeout": 300,
 
   "p2pSequencerAddress": "$GS_SEQUENCER_ADDRESS",
-  "batchInboxAddress": "0xff00000000000000000000000000000000021363",
+  "batchInboxAddress": "0xff00000000000000000000000000000000042069",
   "batchSenderAddress": "$GS_BATCHER_ADDRESS",
 
   "l2OutputOracleSubmissionInterval": 120,
