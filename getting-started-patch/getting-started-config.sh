@@ -100,7 +100,7 @@ config=$(cat << EOL
   "faultGameMaxClockDuration": 600,
   "faultGameGenesisBlock": 0,
   "faultGameGenesisOutputRoot": "0x0000000000000000000000000000000000000000000000000000000000000000",
-  "faultGameSplitDepth": 14,
+  "faultGameSplitDepth": 14
 }
 EOL
 )
