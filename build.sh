@@ -80,12 +80,6 @@ pushd optimism_clones/op-geth
 make geth
 popd
 
-# Generate config file
-echo_stage "Generate config file"
-pushd optimism_clones/optimism/packages/contracts-bedrock
-./scripts/getting-started/config.sh
-popd
-
 # Apply patches
 echo_stage "Apply patches"
 DEPLOYMENTS_DIR="optimism_clones/optimism/packages/contracts-bedrock/deployments/getting-started"
@@ -93,6 +87,12 @@ SCRIPTS_DIR="optimism_clones/optimism/packages/contracts-bedrock/scripts/getting
 rm -rf ${DEPLOYMENTS_DIR}
 cp -a getting-started-patch/deployments ${DEPLOYMENTS_DIR}
 cp getting-started-patch/getting-started-config.sh ${SCRIPTS_DIR}/config.sh
+
+# Generate config file
+echo_stage "Generate config file"
+pushd optimism_clones/optimism/packages/contracts-bedrock
+./scripts/getting-started/config.sh
+popd
 
 # Generate genesis files
 pushd optimism_clones/optimism/op-node
