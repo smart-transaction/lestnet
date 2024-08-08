@@ -73,8 +73,8 @@ services:
     logging:
       driver: "json-file"
       options:
-        max-size: 10m
-        max-file: "3"
+        max-size: 20m
+        max-file: "15"
 
   ${OP_NODE_CONTAINER}:
     container_name: op_node
@@ -91,8 +91,8 @@ services:
     logging:
       driver: "json-file"
       options:
-        max-size: 10m
-        max-file: "3"
+        max-size: 20m
+        max-file: "15"
 
   ${OP_BATCHER_CONTAINER}:
     container_name: op_batcher
@@ -110,8 +110,8 @@ services:
     logging:
       driver: "json-file"
       options:
-        max-size: 10m
-        max-file: "3"
+        max-size: 20m
+        max-file: "15"
 
   ${OP_PROPOSER_CONTAINER}:
     container_name: op_proposer
@@ -128,8 +128,8 @@ services:
     logging:
       driver: "json-file"
       options:
-        max-size: 10m
-        max-file: "3"
+        max-size: 20m
+        max-file: "15"
 
 COMPOSE
 
