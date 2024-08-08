@@ -70,6 +70,11 @@ services:
       - 8545:8545
       - 8546:8546
       - 8551:8551
+    logging:
+      driver: "json-file"
+      options:
+        max-size: 10m
+        max-file: "3"
 
   ${OP_NODE_CONTAINER}:
     container_name: op_node
@@ -83,6 +88,11 @@ services:
       - L1_RPC_KIND=${L1_RPC_KIND}
     ports:
       - 8547:8547
+    logging:
+      driver: "json-file"
+      options:
+        max-size: 10m
+        max-file: "3"
 
   ${OP_BATCHER_CONTAINER}:
     container_name: op_batcher
@@ -97,6 +107,11 @@ services:
       - L1_RPC_URL=${L1_RPC_URL}
     ports:
       - 8548:8548
+    logging:
+      driver: "json-file"
+      options:
+        max-size: 10m
+        max-file: "3"
 
   ${OP_PROPOSER_CONTAINER}:
     container_name: op_proposer
@@ -110,6 +125,11 @@ services:
       - L2_OUTPUT_ORACLE_ADDRESS=${L2_OUTPUT_ORACLE_ADDRESS}
     ports:
       - 8560:8560
+    logging:
+      driver: "json-file"
+      options:
+        max-size: 10m
+        max-file: "3"
 
 COMPOSE
 
