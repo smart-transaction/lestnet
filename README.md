@@ -83,6 +83,10 @@ There is no need to build Blockscout, it's deployed from original Docker images.
     ```
     ./install_docker.sh
     ```
+1.  Make sure docker.sock provides "all" read/write access
+    ```
+    sudo chmod a+rw /var/run/docker.sock
+    ```
 1.  Run the deploy_blockscout.ch script.
     ```
     ./deploy_blockscout.sh

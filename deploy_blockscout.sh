@@ -31,7 +31,7 @@ sudo cp blockscout-patch/user-ops-indexer.yml.patch ../lestnet_data/docker-compo
 # Deploy docker images
 echo_stage "Deploy Blockscout Docker Images"
 pushd ../lestnet_data/docker-compose
-sudo docker-compose up -d
+docker-compose up -d
 popd
 
 # Remove cloned blockscout repo
