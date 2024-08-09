@@ -1,0 +1,15 @@
+diff --git a/cmd/utils/flags.go b/cmd/utils/flags.go
+index a82aad387..6961f43e7 100644
+--- a/cmd/utils/flags.go
++++ b/cmd/utils/flags.go
+@@ -1839,7 +1839,10 @@ func SetEthConfig(ctx *cli.Context, stack *node.Node, cfg *ethconfig.Config) {
+ 		cfg.StateHistory = ctx.Uint64(StateHistoryFlag.Name)
+ 	}
+ 	if ctx.IsSet(StateSchemeFlag.Name) {
++		log.Info("Flag --state.scheme is set", "flag", StateSchemeFlag.Value)
+ 		cfg.StateScheme = ctx.String(StateSchemeFlag.Name)
++	} else {
++		log.Info("Flag --state.scheme is NOT set")
+ 	}
+ 	// Parse transaction history flag, if user is still using legacy config
+ 	// file with 'TxLookupLimit' configured, copy the value to 'TransactionHistory'.

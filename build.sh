@@ -77,16 +77,18 @@ popd
 # Build op-geth binary
 echo_stage "Build op-geth binary"
 pushd optimism_clones/op-geth
+patch -p1 < ../../op-geth-patch/op-geth.patch
 make geth
 popd
 
-# Apply patches
+# Apply optimism patches
 echo_stage "Apply patches"
 DEPLOYMENTS_DIR="optimism_clones/optimism/packages/contracts-bedrock/deployments/getting-started"
 SCRIPTS_DIR="optimism_clones/optimism/packages/contracts-bedrock/scripts/getting-started"
 rm -rf ${DEPLOYMENTS_DIR}
 cp -a getting-started-patch/deployments ${DEPLOYMENTS_DIR}
 cp getting-started-patch/getting-started-config.sh ${SCRIPTS_DIR}/config.sh
+
 
 # Generate config file
 echo_stage "Generate config file"
