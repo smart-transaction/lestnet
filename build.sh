@@ -77,7 +77,6 @@ popd
 # Build op-geth binary
 echo_stage "Build op-geth binary"
 pushd optimism_clones/op-geth
-patch -p1 < ../../op-geth-patch/op-geth.patch
 make geth
 popd
 
