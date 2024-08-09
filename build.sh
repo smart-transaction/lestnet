@@ -113,7 +113,7 @@ popd
 echo_stage "Initialize op-geth"
 pushd optimism_clones/op-geth
 mkdir -p datadir
-build/bin/geth init --datadir=datadir genesis.json
+build/bin/geth init --state.scheme=hash --datadir=datadir genesis.json
 popd
 
 # Build Docker images
