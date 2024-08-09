@@ -54,6 +54,8 @@ export L2_BLOCK_TIME=2
 GETH_RELEASE="https://github.com/ethereum/go-ethereum/archive/refs/tags/v1.14.6.tar.gz"
 GETH_EXTRACT_DIR="go-ethereum-1.14.6"
 
+set -e
+
 # Clone optimism repository
 echo_stage "Clone Optimism repository"
 mkdir -p optimism_clones
@@ -71,8 +73,6 @@ pushd optimism_clones
 wget -O geth_release.tar.gz ${GETH_RELEASE}
 tar xvf geth_release.tar.gz
 popd
-
-set -e
 
 # Build optimism binaries
 echo_stage "Build optimism binaries"
@@ -129,7 +129,7 @@ PROJECT_NAME="delta-exchange-427816-f1"  # Lestnet project
 LESTNET_VERSION="0.1"
 
 echo_stage "Build op-geth docker image"
-pushd docker/${GETH_EXTRACT_DIR}
+pushd docker/op-geth
 cp ../../optimism_clones/${GETH_EXTRACT_DIR}/build/bin/geth .
 cp -r ../../optimism_clones/${GETH_EXTRACT_DIR}/datadir ./datadir
 cp ../../optimism_clones/${GETH_EXTRACT_DIR}/jwt.txt .
