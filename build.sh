@@ -51,8 +51,8 @@ export L2_CHAIN_ID=42069
 export L2_BLOCK_TIME=2
 
 # Geth release URL
-GETH_RELEASE="https://github.com/ethereum/go-ethereum/archive/refs/tags/v1.14.6.tar.gz"
-GETH_EXTRACT_DIR="go-ethereum-1.14.6"
+GETH_RELEASE="https://github.com/ethereum/go-ethereum/archive/refs/tags/v1.14.7.tar.gz"
+GETH_EXTRACT_DIR="go-ethereum-1.14.7"
 
 set -e
 
