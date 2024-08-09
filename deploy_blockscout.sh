@@ -29,3 +29,4 @@ docker-compose up -d
 popd
 
 # TODO: Implement remove cloned blockscout repo after db location is re-configured.
+echo "Don't remove the blockscout_clone directory, as it contains the blockscout database and uses it."
