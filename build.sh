@@ -50,8 +50,12 @@ export L1_BLOCK_TIME=12
 export L2_CHAIN_ID=42069
 export L2_BLOCK_TIME=2
 
-# Clone repositories
-echo_stage "Clone repositories"
+# Geth release URL
+GETH_RELEASE="https://github.com/ethereum/go-ethereum/archive/refs/tags/v1.14.6.tar.gz"
+GETH_EXTRACT_DIR="go-ethereum-1.14.6"
+
+# Clone optimism repository
+echo_stage "Clone Optimism repository"
 mkdir -p optimism_clones
 pushd optimism_clones
 
@@ -59,9 +63,13 @@ git clone https://github.com/ethereum-optimism/optimism.git
 pushd optimism
 git checkout ${OPTIMISM_BRANCH}
 popd
+popd
 
-git clone https://github.com/ethereum-optimism/op-geth.git 
-
+# Extract geth release
+echo_stage "Extract Geth release"
+pushd optimism_clones
+wget -O geth_release.tar.gz ${GETH_RELEASE}
+tar xvf geth_release.tar.gz
 popd
 
 set -e
@@ -76,7 +84,7 @@ popd
 
 # Build op-geth binary
 echo_stage "Build op-geth binary"
-pushd optimism_clones/op-geth
+pushd optimism_clones/${GETH_EXTRACT_DIR}
 make geth
 popd
 
@@ -104,13 +112,13 @@ go run cmd/main.go genesis l2 \
   --outfile.rollup rollup.json \
   --l1-rpc ${L1_RPC_URL}
 openssl rand -hex 32 > jwt.txt
-cp genesis.json ../../op-geth
-cp jwt.txt ../../op-geth
+cp genesis.json ../../${GETH_EXTRACT_DIR}
+cp jwt.txt ../../${GETH_EXTRACT_DIR}
 popd
 
 # Initialize op-geth
 echo_stage "Initialize op-geth"
-pushd optimism_clones/op-geth
+pushd optimism_clones/${GETH_EXTRACT_DIR}
 mkdir -p datadir
 build/bin/geth init --datadir=datadir genesis.json
 popd
@@ -121,10 +129,10 @@ PROJECT_NAME="delta-exchange-427816-f1"  # Lestnet project
 LESTNET_VERSION="0.1"
 
 echo_stage "Build op-geth docker image"
-pushd docker/op-geth
-cp ../../optimism_clones/op-geth/build/bin/geth .
-cp -r ../../optimism_clones/op-geth/datadir ./datadir
-cp ../../optimism_clones/op-geth/jwt.txt .
+pushd docker/${GETH_EXTRACT_DIR}
+cp ../../optimism_clones/${GETH_EXTRACT_DIR}/build/bin/geth .
+cp -r ../../optimism_clones/${GETH_EXTRACT_DIR}/datadir ./datadir
+cp ../../optimism_clones/${GETH_EXTRACT_DIR}/jwt.txt .
 build_docker ${CLOUD_REGION} ${PROJECT_NAME} "op-geth" ${LESTNET_VERSION}
 rm -rf ./geth ./datadir ./jwt.txt
 popd
