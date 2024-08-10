@@ -93,3 +93,57 @@ There is no need to build Blockscout, it's deployed from original Docker images.
     ```
     ./deploy_blockscout.sh
     ```
+
+# L1 Deployment
+
+1.  Check software dependencies, https://docs.optimism.io/builders/chain-operators/deploy/overview#software-dependencies
+
+1.  Set and export env variables
+    ```
+    # Copied from build.sh
+    GS_ADMIN_ADDRESS=0x07FcC5862EB168711fb0A8fD259b4318E5b94B1b
+    GS_BATCHER_ADDRESS=0x44864Bdda3C02845787e0E10C8455556Cd0b6ff5
+    GS_PROPOSER_ADDRESS=0x8AB2032dF58ba3eC04a173fc1B76e930D8291fA7
+    GS_SEQUENCER_ADDRESS=0xc78Af82ECD90d8A08Fef3bec2C920f4719B40742
+    L1_BLOCK_TIME=12
+    L1_CHAIN_ID=11155111
+    L1_RPC_KIND=alchemy
+    L1_RPC_URL=https://eth-sepolia.g.alchemy.com/v2/ICXxRS_FHofIsVaTe_LxtU9Uaqfxw8Rc
+    L2_BLOCK_TIME=2
+    L2_CHAIN_ID=21363
+    ```
+
+1.  Generate IMPL_SALT
+    ```
+    export IMPL_SALT=$(openssl rand -hex 32)
+    ```
+
+1.  Make sure the following accounts have enough Sepolia ETH for deployment:
+    | Account | Value |
+    | ------- | ----- |
+    | GS_ADMIN_ADDRESS | 0.5 Sepolia ETH |
+    | GS_PROPOSER_ADDRESS | 0.2 Sepolia ETH |
+    | GS_BATCHER_ADDRESS | 0.1 Sepolia ETH |
+
+1.  Clone optimism repository
+    ```
+    git clone https://github.com/ethereum-optimism/optimism.git
+    cd optimism
+    ```
+
+1.  Generate deployment configuration
+    ```
+    cd packages/contracts-bedrock
+    ./scripts/getting-started/config.sh
+    ```
+    It will save the configuration into the `deploy-config/getting-started.json`
+
+1.  Checkout the latest verified contracts branch. Not it's `op-contracts/v1.5.0`
+    ```
+    git checkout op-contracts/v1.5.0
+    ```
+
+1.  Run contracts deployment
+    ```
+    pnpm deploy
+    ```
