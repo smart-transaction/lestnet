@@ -95,6 +95,7 @@ There is no need to build Blockscout, it's deployed from original Docker images.
     ```
 
 # L1 Deployment
+1. Check out contracts deployment documentation, https://docs.optimism.io/builders/chain-operators/deploy/smart-contracts
 
 1.  Check software dependencies, https://docs.optimism.io/builders/chain-operators/deploy/overview#software-dependencies
 
