@@ -119,7 +119,7 @@ There is no need to build Blockscout, it's deployed from original Docker images.
     export IMPL_SALT=$(openssl rand -hex 32)
     ```
 
-1.  Make sure the following accounts have enough Sepolia ETH for deployment:
+1.  Make sure the following accounts have enough Sepolia ETH for deployment on the **Sepolia Testnet** :
     | Account | Value |
     | ------- | ----- |
     | GS_ADMIN_ADDRESS | 0.5 Sepolia ETH |
