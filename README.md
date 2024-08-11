@@ -95,7 +95,10 @@ There is no need to build Blockscout, it's deployed from original Docker images.
     ```
 
 # L1 Deployment
-1. Check out contracts deployment documentation, https://docs.optimism.io/builders/chain-operators/deploy/smart-contracts
+
+We need to deploy L1 contracts rarely, when a new version is issued. The current version is `op-contracts/v1.5.0`
+
+1.  Check out contracts deployment documentation, https://docs.optimism.io/builders/chain-operators/deploy/smart-contracts
 1.  Check software dependencies, https://docs.optimism.io/builders/chain-operators/deploy/overview#software-dependencies
 1.  Make sure the gcloud CLI is installed on your workstation, https://cloud.google.com/sdk/docs/install
 1.  Login to gcloud, https://cloud.google.com/sdk/gcloud/reference/auth/login
@@ -146,5 +149,10 @@ There is no need to build Blockscout, it's deployed from original Docker images.
 1.  Run contracts deployment
     ```
     pnpm build
-    pnpm deploy
+    ./scripts/deploy.sh
     ```
+1.  Save contracts deployment output addresses to the lestnet repo
+    ```
+    cp deployments/11155111-deploy.json <Lestnet Repo Directory>/getting-started-patch/.deploy
+    ```
+1.  Don't forget to push a new `.deploy` to lestnet repo
