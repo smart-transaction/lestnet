@@ -64,7 +64,7 @@ There is a connection data:
 ```
 Name: Lestnet
 Address: https://lestnet.org
-Chain ID: 42069
+Chain ID: 21363
 ```
 
 Chain ID is to be replaced with 21363.

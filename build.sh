@@ -47,7 +47,7 @@ export L1_CHAIN_ID=11155111
 export L1_BLOCK_TIME=12
 
 # L2 chain information
-export L2_CHAIN_ID=42069
+export L2_CHAIN_ID=21363
 export L2_BLOCK_TIME=2
 
 # Clone repositories
@@ -83,11 +83,8 @@ popd
 # Apply optimism patches
 echo_stage "Apply patches"
 DEPLOYMENTS_DIR="optimism_clones/optimism/packages/contracts-bedrock/deployments/getting-started"
-SCRIPTS_DIR="optimism_clones/optimism/packages/contracts-bedrock/scripts/getting-started"
 rm -rf ${DEPLOYMENTS_DIR}
-cp -a getting-started-patch/deployments ${DEPLOYMENTS_DIR}
-cp getting-started-patch/getting-started-config.sh ${SCRIPTS_DIR}/config.sh
-
+cp -a getting-started-patch ${DEPLOYMENTS_DIR}
 
 # Generate config file
 echo_stage "Generate config file"

@@ -44,7 +44,7 @@ services:
         ETHEREUM_JSONRPC_HTTP_URL: https://lestnet.org/
         ETHEREUM_JSONRPC_TRACE_URL: https://lestnet.org/
         ETHEREUM_JSONRPC_WS_URL: wss://lestnet.org:8888/
-        CHAIN_ID: '42069'
+        CHAIN_ID: '21363'
 
   visualizer:
     extends:
