@@ -23,14 +23,14 @@ function build_docker() {
 }
 
 # Params check
-# if [[ "" == "$1" ]]; then
-#   echo "Usage: $0 <optimism_verified_branch>"
-#   echo "Use the tutorial branch tutorials/chain or the latest branch like op-contracts/vX.X.X"
-#   exit 1
-# fi
+if [[ "" == "$1" ]]; then
+  echo "Usage: $0 <optimism_verified_branch>"
+  echo "Use the tutorial branch tutorials/chain or the latest branch like op-contracts/vX.X.X"
+  exit 1
+fi
 
 # Optimism branch
-# OPTIMISM_BRANCH=$1
+OPTIMISM_BRANCH=$1
 
 # L1 RPC URL
 export L1_RPC_URL="https://eth-sepolia.g.alchemy.com/v2/ICXxRS_FHofIsVaTe_LxtU9Uaqfxw8Rc"
@@ -57,7 +57,6 @@ pushd optimism_clones
 
 git clone https://github.com/ethereum-optimism/optimism.git
 pushd optimism
-# git checkout ${OPTIMISM_BRANCH}
 popd
 
 git clone https://github.com/ethereum-optimism/op-geth.git 
@@ -69,9 +68,11 @@ set -e
 # Build optimism binaries
 echo_stage "Build optimism binaries"
 pushd optimism_clones/optimism
-# pnpm install
+git checkout ${OPTIMISM_BRANCH}
+pnpm install
 make op-node op-batcher op-proposer
-# pnpm build
+pnpm build
+git checkout develop
 popd
 
 # Build op-geth binary
@@ -89,7 +90,6 @@ cp -a getting-started-patch ${DEPLOYMENTS_DIR}
 # Generate config file
 echo_stage "Generate config file"
 pushd optimism_clones/optimism/packages/contracts-bedrock
-# git checkout develop
 ./scripts/getting-started/config.sh
 popd
 
