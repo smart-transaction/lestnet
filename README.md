@@ -141,7 +141,7 @@ There is no need to build Blockscout, it's deployed from original Docker images.
     ```
     export DEPLOY_CONFIG_PATH=$(pwd)/deploy-config/getting-started.json
     export DEPLOY_ETH_RPC_URL=https://eth-sepolia.g.alchemy.com/v2/ICXxRS_FHofIsVaTe_LxtU9Uaqfxw8Rc
-    export DEPLOY_PRIVATE_KEY=$(gcloud secrets versions access 1 --secret="LESTNET_DEPLOYMENT_PRIVATE_KEY")
+    export DEPLOY_PRIVATE_KEY=$(gcloud secrets versions access 1 --secret="GS_ADMIN_PRIVATE_KEY")
     ```
 1.  Run contracts deployment
     ```
