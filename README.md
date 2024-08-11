@@ -145,5 +145,6 @@ There is no need to build Blockscout, it's deployed from original Docker images.
     ```
 1.  Run contracts deployment
     ```
+    pnpm build
     pnpm deploy
     ```
