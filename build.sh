@@ -23,14 +23,14 @@ function build_docker() {
 }
 
 # Params check
-if [[ "" == "$1" ]]; then
-  echo "Usage: $0 <optimism_verified_branch>"
-  echo "Use the tutorial branch tutorials/chain or the latest branch like op-contracts/vX.X.X"
-  exit 1
-fi
+# if [[ "" == "$1" ]]; then
+#   echo "Usage: $0 <optimism_verified_branch>"
+#   echo "Use the tutorial branch tutorials/chain or the latest branch like op-contracts/vX.X.X"
+#   exit 1
+# fi
 
 # Optimism branch
-OPTIMISM_BRANCH=$1
+# OPTIMISM_BRANCH=$1
 
 # L1 RPC URL
 export L1_RPC_URL="https://eth-sepolia.g.alchemy.com/v2/ICXxRS_FHofIsVaTe_LxtU9Uaqfxw8Rc"
@@ -57,7 +57,7 @@ pushd optimism_clones
 
 git clone https://github.com/ethereum-optimism/optimism.git
 pushd optimism
-git checkout ${OPTIMISM_BRANCH}
+# git checkout ${OPTIMISM_BRANCH}
 popd
 
 git clone https://github.com/ethereum-optimism/op-geth.git 
@@ -69,9 +69,9 @@ set -e
 # Build optimism binaries
 echo_stage "Build optimism binaries"
 pushd optimism_clones/optimism
-pnpm install
+# pnpm install
 make op-node op-batcher op-proposer
-pnpm build
+# pnpm build
 popd
 
 # Build op-geth binary
@@ -89,16 +89,28 @@ cp -a getting-started-patch ${DEPLOYMENTS_DIR}
 # Generate config file
 echo_stage "Generate config file"
 pushd optimism_clones/optimism/packages/contracts-bedrock
+# git checkout develop
 ./scripts/getting-started/config.sh
 popd
 
+# Dump genesis state
+echo_stage "Dump genesis state"
+pushd optimism_clones/optimism/packages/contracts-bedrock
+export CONTRACT_ADDRESSES_PATH="deployments/getting-started/.deploy"
+export DEPLOY_CONFIG_PATH="deploy-config/getting-started.json"
+export STATE_DUMP_PATH="deployments/getting-started/.state-dump"
+  forge script scripts/L2Genesis.s.sol:L2Genesis \
+  --sig 'runWithStateDump()'
+popd
+
 # Generate genesis files
-pushd optimism_clones/optimism/op-node
 echo_stage "Generate genesis file"
+pushd optimism_clones/optimism/op-node
 go run cmd/main.go genesis l2 \
-  --deploy-config ../packages/contracts-bedrock/deploy-config/getting-started.json \
-  --l1-deployments ../packages/contracts-bedrock/deployments/getting-started/.deploy \
+  --deploy-config ../packages/contracts-bedrock/${DEPLOY_CONFIG_PATH} \
+  --l1-deployments ../packages/contracts-bedrock/${CONTRACT_ADDRESSES_PATH} \
   --outfile.l2 genesis.json \
+  --l2-allocs ../packages/contracts-bedrock/${STATE_DUMP_PATH} \
   --outfile.rollup rollup.json \
   --l1-rpc ${L1_RPC_URL}
 openssl rand -hex 32 > jwt.txt
