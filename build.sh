@@ -90,7 +90,7 @@ cp -a getting-started-patch ${DEPLOYMENTS_DIR}
 # Generate config file
 echo_stage "Generate config file"
 pushd optimism_clones/optimism/packages/contracts-bedrock
-sed 's/\"gasPriceOracleOverhead\": 0/"gasPriceOracleOverhead": 2100/' ./scripts/getting-started/config.sh ./scripts/getting-started/config-out.sh
+sed 's/\"gasPriceOracleOverhead\": 0/"gasPriceOracleOverhead": 2100/' ./scripts/getting-started/config.sh > ./scripts/getting-started/config-out.sh
 chmod +x ./scripts/getting-started/config-out.sh
 ./scripts/getting-started/config-out.sh
 popd
