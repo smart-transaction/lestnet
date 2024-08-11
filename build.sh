@@ -96,11 +96,13 @@ popd
 # Dump genesis state
 echo_stage "Dump genesis state"
 pushd optimism_clones/optimism/packages/contracts-bedrock
+git checkout ${OPTIMISM_BRANCH}
 export CONTRACT_ADDRESSES_PATH="deployments/getting-started/.deploy"
 export DEPLOY_CONFIG_PATH="deploy-config/getting-started.json"
 export STATE_DUMP_PATH="deployments/getting-started/.state-dump"
   forge script scripts/L2Genesis.s.sol:L2Genesis \
   --sig 'runWithStateDump()'
+git checkout develop
 popd
 
 # Generate genesis files
