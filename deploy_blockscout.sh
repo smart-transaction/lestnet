@@ -9,7 +9,7 @@ function echo_stage() {
 
 set -e
 
-# Cleanup previous websocket instance
+# Cleanup previous blockscout instance
 echo_stage "Cleanup previous instance"
 sudo docker ps -q | xargs sudo docker stop
 test -d blockscout_clone && sudo rm -rf blockscout_clone
