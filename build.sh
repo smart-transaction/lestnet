@@ -44,7 +44,7 @@ export GS_SEQUENCER_ADDRESS=0xc78Af82ECD90d8A08Fef3bec2C920f4719B40742
 
 # L1 chain information
 export L1_CHAIN_ID=11155111
-export L1_BLOCK_TIME=12
+export L1_BLOCK_TIME=300
 
 # L2 chain information
 export L2_CHAIN_ID=21363
