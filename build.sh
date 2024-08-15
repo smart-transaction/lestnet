@@ -95,26 +95,17 @@ chmod +x ./scripts/getting-started/config-out.sh
 ./scripts/getting-started/config-out.sh
 popd
 
-# Dump genesis state
-echo_stage "Dump genesis state"
-pushd optimism_clones/optimism/packages/contracts-bedrock
-git checkout ${OPTIMISM_BRANCH}
-export CONTRACT_ADDRESSES_PATH="deployments/getting-started/.deploy"
-export DEPLOY_CONFIG_PATH="deploy-config/getting-started.json"
-export STATE_DUMP_PATH="deployments/getting-started/.state-dump"
-  forge script scripts/L2Genesis.s.sol:L2Genesis \
-  --sig 'runWithStateDump()'
-git checkout develop
-popd
-
 # Generate genesis files
 echo_stage "Generate genesis file"
 pushd optimism_clones/optimism/op-node
+export CONTRACT_ADDRESSES_PATH="deployments/getting-started/.deploy"
+export DEPLOY_CONFIG_PATH="deploy-config/getting-started.json"
+export ALLOCS_PATH="deployments/getting-started/.allocs"
 go run cmd/main.go genesis l2 \
   --deploy-config ../packages/contracts-bedrock/${DEPLOY_CONFIG_PATH} \
   --l1-deployments ../packages/contracts-bedrock/${CONTRACT_ADDRESSES_PATH} \
   --outfile.l2 genesis.json \
-  --l2-allocs ../packages/contracts-bedrock/${STATE_DUMP_PATH} \
+  --l2-allocs ../packages/contracts-bedrock/${ALLOCS_PATH} \
   --outfile.rollup rollup.json \
   --l1-rpc ${L1_RPC_URL}
 openssl rand -hex 32 > jwt.txt
