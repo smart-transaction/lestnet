@@ -48,7 +48,7 @@ export L1_BLOCK_TIME=12
 
 # L2 chain information
 export L2_CHAIN_ID=21363
-export L2_BLOCK_TIME=2
+export L2_BLOCK_TIME=60
 
 # Clone repositories
 echo_stage "Clone repositories"
