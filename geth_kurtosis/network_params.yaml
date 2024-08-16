@@ -1,6 +1,9 @@
 participants:
   - el_type: geth
-    cl_type: prysm
+    cl_type: lighthouse
+    count: 2
+  - el_type: geth
+    cl_type: teku
 network_params:
   network_id: "21363"
   additional_preloaded_contracts: '{"0x07FcC5862EB168711fb0A8fD259b4318E5b94B1b": {"balance": "10000000000ETH"}}'
