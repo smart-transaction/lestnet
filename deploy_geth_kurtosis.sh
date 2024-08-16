@@ -9,7 +9,7 @@ RPC_HOST_PORT=$(kurtosis port print lestnet el-1-geth-lighthouse rpc)
 WS_HOST_PORT=$(kurtosis port print lestnet el-1-geth-lighthouse ws)
 
 # Reconfiguring nginx proxy
-sudo cat >/etc/nginx/conf.d/lestnet.conf << RPC
+cat >lestnet.conf << RPC
 log_format postdata escape=json '\$remote_addr - \$remote_user [\$time_local] '
                 '"\$request" \$status $bytes_sent '
                 '"\$http_referer" "\$http_user_agent" "\$request_body"';
@@ -34,7 +34,7 @@ server {
 }
 RPC
 
-sudo cat >/etc/nginx/conf.d/lestnet_ws.conf << WS
+cat >lestnet_ws.conf << WS
 server {
         listen 8888 ssl;
         server_name lestnet.org www.lestnet.org;
@@ -49,6 +49,9 @@ server {
         }
 }
 WS
+
+sudo cp lestnet.conf /etc/nginx/conf.d/
+sudo cp lestnet_ws.conf /etc/nginx/conf.d/
 
 # Reloading updated nginx configurations
 sudo /usr/sbin/nginx -s reload
