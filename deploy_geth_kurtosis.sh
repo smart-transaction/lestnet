@@ -1,12 +1,14 @@
-# Running 
+# Running lestnet on curtosis
 kurtosis run github.com/ethpandaops/ethereum-package \
   --args-file ./geth_kurtosis/network_params.yaml \
   --image-download always \
   --enclave lestnet
 
+# Getting internal hosts and ports
 RPC_HOST_PORT=$(kurtosis port print lestnet el-1-geth-lighthouse rpc)
 WS_HOST_PORT=$(kurtosis port print lestnet el-1-geth-lighthouse ws)
 
+# Reconfiguring nginx proxy
 sudo cat >/etc/nginx/conf.d/lestnet.conf << RPC
 log_format postdata escape=json '\$remote_addr - \$remote_user [\$time_local] '
                 '"\$request" \$status $bytes_sent '
@@ -47,3 +49,6 @@ server {
         }
 }
 WS
+
+# Reloading updated nginx configurations
+sudo /usr/sbin/nginx -s reload
