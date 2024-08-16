@@ -63,7 +63,7 @@ There is a connection data:
 
 ```
 Name: Lestnet
-Address: https://lestnet.org
+Address: https://service.lestnet.org
 Chain ID: 21363
 ```
 

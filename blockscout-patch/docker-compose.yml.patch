@@ -41,9 +41,9 @@ services:
     links:
       - db:database
     environment:
-        ETHEREUM_JSONRPC_HTTP_URL: https://lestnet.org/
-        ETHEREUM_JSONRPC_TRACE_URL: https://lestnet.org/
-        ETHEREUM_JSONRPC_WS_URL: wss://lestnet.org:8888/
+        ETHEREUM_JSONRPC_HTTP_URL: https://service.lestnet.org/
+        ETHEREUM_JSONRPC_TRACE_URL: https://service.lestnet.org/
+        ETHEREUM_JSONRPC_WS_URL: wss://service.lestnet.org:8888/
         CHAIN_ID: '21363'
 
   visualizer:
