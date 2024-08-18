@@ -23,11 +23,13 @@ popd
 
 # Apply config patches
 echo_stage "Apply Config Patches"
-sudo cp blockscout-patch/common-blockscout.env.patch blockscout_clone/blockscout/docker-compose/envs/common-blockscout.env
-sudo cp blockscout-patch/common-frontend.env.patch blockscout_clone/blockscout/docker-compose/envs/common-frontend.env
-sudo cp blockscout-patch/docker-compose.yml.patch blockscout_clone/blockscout/docker-compose/docker-compose.yml
-sudo cp blockscout-patch/user-ops-indexer.yml.patch blockscout_clone/blockscout/docker-compose/services/user-ops-indexer.yml
-sudo cp blockscout-patch/default.conf.template.patch blockscout_clone/blockscout/docker-compose/proxy/default.conf.template
+pushd blockscout_clone/blockscout
+sudo patch -p 1 < ../../blockscout-patch/common-blockscout.env.patch
+sudo patch -p 1 < ../../blockscout-patch/common-frontend.env.patch
+sudo patch -p 1 < ../../blockscout-patch/docker-compose.yml.patch
+sudo patch -p 1 < ../../blockscout-patch/user-ops-indexer.yml.patch
+sudo patch -p 1 < ../../blockscout-patch/default.conf.template.patch
+popd
 
 # Deploy docker images
 echo_stage "Deploy Blockscout Docker Images"
