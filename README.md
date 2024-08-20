@@ -44,6 +44,71 @@ Chain ID: 21363
 Currency: LETH
 ```
 
+## Deploy Create2Deployer
+
+`Create2Deployer` is required by Foundry. We have to deploy this contract to Lestnet before we can use Foundry for contracts deployment.
+
+It's actually needed to deploy it once, after running Lestnet from scratch. No need to deploy it on existing instance of Lestnet.
+
+The simplest way is to use the contract and a Hardhat configuration from its github repository.
+
+1.  Clone the Create2Deployer repository.
+    ```
+    git clone https://github.com/pcaversaccio/create2deployer.git
+    ```
+1.  Modify the `hardhat.config.ts` in the repository root.
+    -  Modify the "networks" section, remove all chains and add the Lestnet config:
+        ```
+        networks: {
+            lestnet: {
+                chainId: 21363,
+                url: "https://service.lestnet.org",
+                accounts: [process.env.PRIVATE_KEY],
+            },
+        },
+        ```
+    -   Disable sourcify:
+        ```
+        sourcify: {
+            enabled: false,
+        },
+        ```
+    -   Modify the "etherscan" section, remove all the content and add Lestnet blockscout config:
+        ```
+        etherscan: {
+            apiKey: {
+                lestnet: "dummy",
+            },
+            customChains: [
+                {
+                    network: "lestnet",
+                    chainId: 21363,
+                    urls: {
+                        apiURL: "https://explore.lestnet.org/api",
+                        browserURL: "https://explore.lestnet.org",
+                    },
+                },
+            ],
+        },
+        ```
+1.  Run the contract deployment:
+    ```
+    npx hardhat run scripts/deploy.ts --network lestnet
+    ```
+    You have to expect an output like this:
+    ```
+    Create2Deployer deployed to: 0x28dFb617Cbe33A22a4d10160442C6d7035a090db
+
+    Waiting 30 seconds before beginning the contract verification to allow the block explorer to index the contract...
+
+    Successfully submitted source code for contract
+    contracts/Create2Deployer.sol:Create2Deployer at 0x28dFb617Cbe33A22a4d10160442C6d7035a090db
+    for verification on the block explorer. Waiting for verification result...
+
+    Successfully verified contract Create2Deployer on the block explorer.
+    https://explore.lestnet.org/address/0x28dFb617Cbe33A22a4d10160442C6d7035a090db#code
+    ```
+
 # Blockscout
 
 There is no need to build Blockscout, it's deployed from original Docker images. We only need to customize some config parameters.
