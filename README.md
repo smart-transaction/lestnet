@@ -52,6 +52,7 @@ It's actually needed to deploy it once, after running Lestnet from scratch. No n
 
 The simplest way is to use the contract and a Hardhat configuration from its github repository.
 
+1.  Make sure you have node.js installed.
 1.  Clone the Create2Deployer repository.
     ```
     git clone https://github.com/pcaversaccio/create2deployer.git
