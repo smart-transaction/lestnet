@@ -56,6 +56,11 @@ The simplest way is to use the contract and a Hardhat configuration from its git
     ```
     git clone https://github.com/pcaversaccio/create2deployer.git
     ```
+1.  Retrieve the GS admin private key and export it.
+    ```
+    export PRIVATE_KEY=$(gcloud secrets versions access 1 --secret="GS_ADMIN_PRIVATE_KEY")
+    ```
+    If you have issues with secret access ask the STXN Google cloud admin for permissions. 
 1.  Modify the `hardhat.config.ts` in the repository root.
     -  Modify the "networks" section, remove all chains and add the Lestnet config:
         ```
