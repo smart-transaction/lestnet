@@ -1,0 +1,13 @@
+diff --git a/src/el/geth/geth_launcher.star b/src/el/geth/geth_launcher.star
+index 59b8ceb..e425f9b 100644
+--- a/src/el/geth/geth_launcher.star
++++ b/src/el/geth/geth_launcher.star
+@@ -257,7 +257,7 @@ def get_config(
+         "--http.corsdomain=*",
+         # WARNING: The admin info endpoint is enabled so that we can easily get ENR/enode, which means
+         #  that users should NOT store private information in these Kurtosis nodes!
+-        "--http.api=admin,engine,net,eth,web3,debug",
++        "--http.api=admin,engine,net,eth,web3,personal,debug",
+         "--ws",
+         "--ws.addr=0.0.0.0",
+         "--ws.port={0}".format(WS_PORT_NUM),

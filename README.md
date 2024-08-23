@@ -29,6 +29,15 @@ All following commands are to be run from the `lestnetserver` SSH terminal.
     ./deploy_geth_kurtosis.sh
     ```
 
+## Pre-funded Accounts Data
+
+Pre-funded accounts are stored on the Google Cloud secret manager.
+
+-   `LESTNET_PREFUNDED_ACCOUNTS` - a list of pre-funded accounts and their private keys, formatted as a star script.
+-   `LESTNET_PREFUNDED_ACCOUNTS_PASSPHRASE` - the mnemonic phrase used for generating accounts.
+
+Ask smart transactions cloud admin for getting access.
+
 ## Configure https and wss proxy
 
 The proxy configuration with certificates is located on the `lestnetserver` machine in the directory `/etc/nginx/conf.d`. It's updated during the lestnet chain running. Kurtosis assigns ports dynamically, so we need proxy update after each kurtosis services restart.
@@ -43,6 +52,10 @@ Address: https://service.lestnet.org
 Chain ID: 21363
 Currency: LETH
 ```
+
+## Deploy Create2Deployer proxy
+
+TBD
 
 ## Deploy Create2Deployer
 

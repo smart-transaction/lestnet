@@ -1,5 +1,6 @@
 blockscout_clone
 optimism_clones
+geth_kurtosis_clone
 docker-compose.yml
 up.sh
 down.sh

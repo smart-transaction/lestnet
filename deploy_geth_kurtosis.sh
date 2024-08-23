@@ -1,5 +1,23 @@
+set -e
+
+# Cloning the geth kurtosis configuration
+mkdir -p geth_kurtosis_clone
+pushd geth_kurtosis_clone
+git clone https://github.com/ethpandaops/ethereum-package.git
+popd
+
+# Patching the geth kurtosis configuration
+pushd geth_kurtosis_clone/ethereum-package
+patch -p 1 < ../../geth_kurtosis/geth_launcher.star.patch
+popd
+
+# Patching pre-defined accounts
+cat > ./geth_kurtosis_clone/ethereum-package/src/prelaunch_data_generator/genesis_constants/genesis_constants.star << PRE_FUNDED
+$(gcloud secrets versions access 1 --secret="LESTNET_PREFUNDED_ACCOUNTS")
+PRE_FUNDED
+
 # Running lestnet on curtosis
-kurtosis run github.com/ethpandaops/ethereum-package \
+kurtosis run ./geth_kurtosis_clone/ethereum-package \
   --args-file ./geth_kurtosis/network_params.yaml \
   --image-download always \
   --enclave lestnet
@@ -55,3 +73,6 @@ sudo cp lestnet_ws.conf /etc/nginx/conf.d/
 
 # Reloading updated nginx configurations
 sudo /usr/sbin/nginx -s reload
+
+# Deleting the geth kurtosis repository clone.
+rm -rf geth_kurtosis_clone
