@@ -4,6 +4,6 @@ participants:
     el_log_level: "error"
     cl_type: lighthouse
     cl_log_level: "error"
-    count: 2
+    count: 1
 network_params:
   network_id: "21363"
