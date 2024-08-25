@@ -12,9 +12,9 @@ patch -p 1 < ../../geth_kurtosis/geth_launcher.star.patch
 popd
 
 # Patching pre-defined accounts
-cat > ./geth_kurtosis_clone/ethereum-package/src/prelaunch_data_generator/genesis_constants/genesis_constants.star << PRE_FUNDED
-$(gcloud secrets versions access 1 --secret="LESTNET_PREFUNDED_ACCOUNTS")
-PRE_FUNDED
+# cat > ./geth_kurtosis_clone/ethereum-package/src/prelaunch_data_generator/genesis_constants/genesis_constants.star << PRE_FUNDED
+# $(gcloud secrets versions access 1 --secret="LESTNET_PREFUNDED_ACCOUNTS")
+# PRE_FUNDED
 
 # Running lestnet on curtosis
 kurtosis run ./geth_kurtosis_clone/ethereum-package \
