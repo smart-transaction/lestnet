@@ -1,0 +1,9 @@
+diff --git a/apps/block_scout_web/assets/static/images/favicon-16x16.png b/apps/block_scout_web/assets/static/images/favicon-16x16.png
+index 6c6c9d2cda..8f27737252 100644
+Binary files a/apps/block_scout_web/assets/static/images/favicon-16x16.png and b/apps/block_scout_web/assets/static/images/favicon-16x16.png differ
+diff --git a/apps/block_scout_web/assets/static/images/favicon-32x32.png b/apps/block_scout_web/assets/static/images/favicon-32x32.png
+index 509ffc1dac..18260e43b9 100644
+Binary files a/apps/block_scout_web/assets/static/images/favicon-32x32.png and b/apps/block_scout_web/assets/static/images/favicon-32x32.png differ
+diff --git a/apps/block_scout_web/assets/static/images/favicon.ico b/apps/block_scout_web/assets/static/images/favicon.ico
+index 293b5abbc7..53d8406834 100644
+Binary files a/apps/block_scout_web/assets/static/images/favicon.ico and b/apps/block_scout_web/assets/static/images/favicon.ico differ
