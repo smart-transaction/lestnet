@@ -18,6 +18,7 @@ function clone_repo() {
 function refresh_repo() {
   echo_stage "Refresh Blockscout Repository"
   pushd blockscout_clone/blockscout
+  git restore .
   git pull
   popd
 }
