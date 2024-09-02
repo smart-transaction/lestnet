@@ -7,19 +7,26 @@ function echo_stage() {
   echo ""
 }
 
+function clone_repo() {
+  echo_stage "Clone Blockscout Repository"
+  mkdir -p blockscout_clone
+  pushd blockscout_clone
+  git clone https://github.com/blockscout/blockscout
+  popd
+}
+
+function refresh_repo() {
+  echo_stage "Refresh Blockscout Repository"
+  pushd blockscout_clone/blockscout
+  git pull
+  popd
+}
+
 set -e
 
-# Cleanup previous blockscout instance
-echo_stage "Cleanup previous instance"
-sudo docker ps -q | xargs sudo docker stop
-test -d blockscout_clone && sudo rm -rf blockscout_clone
-
 # Clone blockscout repository
-echo_stage "Clone Blockscout Repository"
-mkdir -p blockscout_clone
-pushd blockscout_clone
-git clone https://github.com/blockscout/blockscout
-popd
+test -d blockscout_clone && refresh_repo
+test -d blockscout_clone || clone_repo
 
 # Apply config patches
 echo_stage "Apply Config Patches"
@@ -29,6 +36,7 @@ sudo patch -p 1 < ../../blockscout-patch/common-frontend.env.patch
 sudo patch -p 1 < ../../blockscout-patch/docker-compose.yml.patch
 sudo patch -p 1 < ../../blockscout-patch/user-ops-indexer.yml.patch
 sudo patch -p 1 < ../../blockscout-patch/default.conf.template.patch
+sudo patch -p 1 < ../../blockscout-patch/backend.yml.patch
 popd
 
 # Deploy docker images
@@ -36,6 +44,3 @@ echo_stage "Deploy Blockscout Docker Images"
 pushd blockscout_clone/blockscout/docker-compose
 sudo docker-compose up -d
 popd
-
-# TODO: Implement remove cloned blockscout repo after db location is re-configured.
-echo "Don't remove the blockscout_clone directory, as it contains the blockscout database and uses it."
