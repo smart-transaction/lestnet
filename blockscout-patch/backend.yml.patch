@@ -1,0 +1,16 @@
+diff --git a/docker-compose/services/backend.yml b/docker-compose/services/backend.yml
+index cf8a0871d3..75bb459c12 100644
+--- a/docker-compose/services/backend.yml
++++ b/docker-compose/services/backend.yml
+@@ -12,5 +12,10 @@ services:
+       - 'host.docker.internal:host-gateway'
+     env_file:
+       -  ../envs/common-blockscout.env
++    logging:
++      driver: "json-file"
++      options:
++        max-size: 20m
++        max-file: "15"
+     volumes:
+       - ./logs/:/app/logs/
+\ No newline at end of file
