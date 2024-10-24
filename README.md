@@ -54,8 +54,51 @@ Currency: LETH
 ```
 
 ## Deploy Create2Deployer proxy
+`Create2Deployer proxy` is required by Foundry. We have to deploy this contract to Lestnet before we can use Foundry for contracts deployment.
 
-TBD
+First of all, attach to Lestnet
+```
+geth attach https://explore.lestnet.org
+```
+
+All next steps are to be done in the js console
+1.  Create an account.
+    ```
+    > personal.newAccount();
+    ```
+    Enter and repeat a passphrase (can be empty)
+    You'll get an account address. Keep it.
+1.  Unlock the account
+    ```
+    > personal.unlockAccount("<account>");
+    ```
+    Should return true
+1.  Then run following magic commands:
+    ```
+    > eth.sendTransaction({"from":"created account","to":"0x3fAB184622Dc19b6109349B94811493BF2a45362","value":"10000000000000000"});
+    ```
+    Expected return: Tx Hash
+
+    ```
+    > eth.sendRawTransaction("0xf8a58085174876e800830186a08080b853604580600e600039806000f350fe7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe03601600081602082378035828234f58015156039578182fd5b8082525050506014600cf31ba02222222222222222222222222222222222222222222222222222222222222222a02222222222222222222222222222222222222222222222222222222222222222");
+    ```
+    Expected return: Tx Hash
+    ```
+    > eth.call({"from":"created account","to":"0x4e59b44847b379578588920ca78fbf26c0b4956c", "data":"0x00000000000000000000000000000000000000000000000000000000000000006080604052348015600f57600080fd5b5060848061001e6000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c8063c3cafc6f14602d575b600080fd5b6033604f565b604051808260ff1660ff16815260200191505060405180910390f35b6000602a90509056fea165627a7a72305820ab7651cb86b8c1487590004c2444f26ae30077a6b96c6bc62dda37f1328539250029"}, "latest")
+    ```
+    Expected return: An account number, example: "0x115bcf08a650d194d410f1ca43a17ca41c8d88bc"
+    ```
+    > eth.sendTransaction({"from":"created account","to":"0x4e59b44847b379578588920ca78fbf26c0b4956c", "gas":"0xf4240", "data":"0x00000000000000000000000000000000000000000000000000000000000000006080604052348015600f57600080fd5b5060848061001e6000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c8063c3cafc6f14602d575b600080fd5b6033604f565b604051808260ff1660ff16815260200191505060405180910390f35b6000602a90509056fea165627a7a72305820ab7651cb86b8c1487590004c2444f26ae30077a6b96c6bc62dda37f1328539250029"});
+    ```
+    Expected return: Tx Hash
+    ```
+    > eth.call({"to":"Account returned by previous eth.call", "data":"0xc3cafc6f"}, "latest");
+    ```
+    Expected return: "0x000000000000000000000000000000000000000000000000000000000000002a"
+
+If all steps are successful, you can consider Create2 proxy deployed successfully.
+
+Alternatively, you can take a look at this example: https://github.com/Zoltu/deterministic-deployment-proxy
 
 ## Deploy Create2Deployer
 
