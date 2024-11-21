@@ -47,7 +47,7 @@ export L1_CHAIN_ID=11155111
 export L1_BLOCK_TIME=300
 
 # L2 chain information
-export L2_CHAIN_ID=21363
+export L2_CHAIN_ID=21364
 export L2_BLOCK_TIME=60
 
 # Clone repositories

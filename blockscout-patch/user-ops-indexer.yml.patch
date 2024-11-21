@@ -7,6 +7,6 @@ index 352083b9a6..b890c10d2a 100644
        -  ../envs/common-user-ops-indexer.env
      environment:
 -      - USER_OPS_INDEXER__INDEXER__RPC_URL=${USER_OPS_INDEXER__INDEXER__RPC_URL:-ws://host.docker.internal:8545/}
-+      - USER_OPS_INDEXER__INDEXER__RPC_URL=${USER_OPS_INDEXER__INDEXER__RPC_URL:-wss://service.lestnet.org:8888/}
++      - USER_OPS_INDEXER__INDEXER__RPC_URL=${USER_OPS_INDEXER__INDEXER__RPC_URL:-wss://devservice.lestnet.org:8888/}
        - USER_OPS_INDEXER__DATABASE__CONNECT__URL=${USER_OPS_INDEXER__DATABASE__CONNECT__URL:-postgresql://blockscout:ceWb1MeLBEeOIfk65gU8EjF8@db:5432/blockscout}
        - USER_OPS_INDEXER__DATABASE__RUN_MIGRATIONS=true

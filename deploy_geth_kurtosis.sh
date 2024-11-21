@@ -35,7 +35,7 @@ log_format postdata escape=json '\$remote_addr - \$remote_user [\$time_local] '
 server {
 
         listen 443 ssl;
-        server_name service.lestnet.org www.service.lestnet.org;
+        server_name devservice.lestnet.org www.devservice.lestnet.org;
 
         ssl_certificate /etc/nginx/conf.d/STAR_lestnet_org_chain.crt;
         ssl_certificate_key /etc/nginx/conf.d/STAR_lestnet_org.key;
@@ -55,7 +55,7 @@ RPC
 cat >lestnet_ws.conf << WS
 server {
         listen 8888 ssl;
-        server_name service.lestnet.org www.service.lestnet.org;
+        server_name devservice.lestnet.org www.devservice.lestnet.org;
         ssl_certificate /etc/nginx/conf.d/STAR_lestnet_org_chain.crt;
         ssl_certificate_key /etc/nginx/conf.d/STAR_lestnet_org.key;
         location / {
