@@ -35,6 +35,7 @@ pushd blockscout_clone/blockscout
 sudo patch -p 1 < ../../blockscout-patch/common-blockscout.env.patch
 sudo patch -p 1 < ../../blockscout-patch/common-frontend.env.patch
 sudo patch -p 1 < ../../blockscout-patch/docker-compose.yml.patch
+sudo patch -p 1 < ../../blockscout-patch/common-nft-media-handler.env.patch
 sudo patch -p 1 < ../../blockscout-patch/user-ops-indexer.yml.patch
 sudo patch -p 1 < ../../blockscout-patch/default.conf.template.patch
 sudo patch -p 1 < ../../blockscout-patch/backend.yml.patch

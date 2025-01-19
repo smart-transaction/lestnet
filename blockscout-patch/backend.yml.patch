@@ -1,8 +1,8 @@
 diff --git a/docker-compose/services/backend.yml b/docker-compose/services/backend.yml
-index cf8a0871d3..75bb459c12 100644
+index 46fe299ab2..db2db9b013 100644
 --- a/docker-compose/services/backend.yml
 +++ b/docker-compose/services/backend.yml
-@@ -12,5 +12,10 @@ services:
+@@ -12,6 +12,11 @@ services:
        - 'host.docker.internal:host-gateway'
      env_file:
        -  ../envs/common-blockscout.env
@@ -13,4 +13,5 @@ index cf8a0871d3..75bb459c12 100644
 +        max-file: "15"
      volumes:
        - ./logs/:/app/logs/
+       - ./dets/:/app/dets/
 \ No newline at end of file

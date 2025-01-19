@@ -1,8 +1,8 @@
 diff --git a/docker-compose/docker-compose.yml b/docker-compose/docker-compose.yml
-index f588265686..71819958ba 100644
+index d8e5766b2e..fe8ea3bbde 100644
 --- a/docker-compose/docker-compose.yml
 +++ b/docker-compose/docker-compose.yml
-@@ -41,10 +41,10 @@ services:
+@@ -34,22 +34,10 @@ services:
      links:
        - db:database
      environment:
@@ -10,6 +10,18 @@ index f588265686..71819958ba 100644
 -        ETHEREUM_JSONRPC_TRACE_URL: http://host.docker.internal:8545/
 -        ETHEREUM_JSONRPC_WS_URL: ws://host.docker.internal:8545/
 -        CHAIN_ID: '1337'
+-
+-  nft_media_handler:
+-    depends_on:
+-      - backend
+-    extends:
+-      file: ./services/nft_media_handler.yml
+-      service: nft_media_handler
+-    build:
+-      context: ..
+-      dockerfile: ./docker/Dockerfile
+-      args:
+-        RELEASE_VERSION: 6.10.1
 +        ETHEREUM_JSONRPC_HTTP_URL: https://service.lestnet.org/
 +        ETHEREUM_JSONRPC_TRACE_URL: https://service.lestnet.org/
 +        ETHEREUM_JSONRPC_WS_URL: wss://service.lestnet.org:8888/
