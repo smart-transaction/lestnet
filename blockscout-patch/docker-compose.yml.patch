@@ -1,5 +1,5 @@
 diff --git a/docker-compose/docker-compose.yml b/docker-compose/docker-compose.yml
-index d8e5766b2e..fe8ea3bbde 100644
+index f9fed8daaf..d597c2f620 100644
 --- a/docker-compose/docker-compose.yml
 +++ b/docker-compose/docker-compose.yml
 @@ -34,22 +34,10 @@ services:
@@ -21,7 +21,7 @@ index d8e5766b2e..fe8ea3bbde 100644
 -      context: ..
 -      dockerfile: ./docker/Dockerfile
 -      args:
--        RELEASE_VERSION: 6.10.1
+-        RELEASE_VERSION: 7.0.2
 +        ETHEREUM_JSONRPC_HTTP_URL: https://devservice.lestnet.org/
 +        ETHEREUM_JSONRPC_TRACE_URL: https://devservice.lestnet.org/
 +        ETHEREUM_JSONRPC_WS_URL: wss://devservice.lestnet.org:8888/
