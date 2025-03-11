@@ -1,13 +1,34 @@
 diff --git a/src/el/geth/geth_launcher.star b/src/el/geth/geth_launcher.star
-index 59b8ceb..e425f9b 100644
+index 36bb61b..6f6cdfa 100644
 --- a/src/el/geth/geth_launcher.star
 +++ b/src/el/geth/geth_launcher.star
-@@ -257,7 +257,7 @@ def get_config(
+@@ -205,7 +205,7 @@ def get_config(
          "--http.corsdomain=*",
          # WARNING: The admin info endpoint is enabled so that we can easily get ENR/enode, which means
          #  that users should NOT store private information in these Kurtosis nodes!
--        "--http.api=admin,engine,net,eth,web3,debug",
-+        "--http.api=admin,engine,net,eth,web3,personal,debug",
+-        "--http.api=admin,engine,net,eth,web3,debug,txpool",
++        "--http.api=admin,engine,net,eth,web3,personal,debug,txpool",
          "--ws",
          "--ws.addr=0.0.0.0",
          "--ws.port={0}".format(WS_PORT_NUM),
+@@ -229,16 +229,16 @@ def get_config(
+     if BUILDER_IMAGE_STR in participant.el_image:
+         for index, arg in enumerate(cmd):
+             if "--http.api" in arg:
+-                cmd[index] = "--http.api=admin,engine,net,eth,web3,debug,mev,flashbots"
++                cmd[index] = "--http.api=admin,engine,net,eth,web3,debug,mev,flashbots,personal"
+             if "--ws.api" in arg:
+-                cmd[index] = "--ws.api=admin,engine,net,eth,web3,debug,mev,flashbots"
++                cmd[index] = "--ws.api=admin,engine,net,eth,web3,debug,mev,flashbots,personal"
+ 
+     if SUAVE_ENABLED_GETH_IMAGE_STR in participant.el_image:
+         for index, arg in enumerate(cmd):
+             if "--http.api" in arg:
+-                cmd[index] = "--http.api=admin,engine,net,eth,web3,debug,suavex"
++                cmd[index] = "--http.api=admin,engine,net,eth,web3,debug,suavex,personal"
+             if "--ws.api" in arg:
+-                cmd[index] = "--ws.api=admin,engine,net,eth,web3,debug,suavex"
++                cmd[index] = "--ws.api=admin,engine,net,eth,web3,debug,suavex,personal"
+ 
+     if (
+         launcher.network == constants.NETWORK_NAME.kurtosis
