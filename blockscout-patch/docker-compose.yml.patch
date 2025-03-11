@@ -22,9 +22,9 @@ index d8e5766b2e..fe8ea3bbde 100644
 -      dockerfile: ./docker/Dockerfile
 -      args:
 -        RELEASE_VERSION: 6.10.1
-+        ETHEREUM_JSONRPC_HTTP_URL: https://service.lestnet.org/
-+        ETHEREUM_JSONRPC_TRACE_URL: https://service.lestnet.org/
-+        ETHEREUM_JSONRPC_WS_URL: wss://service.lestnet.org:8888/
++        ETHEREUM_JSONRPC_HTTP_URL: https://devservice.lestnet.org/
++        ETHEREUM_JSONRPC_TRACE_URL: https://devservice.lestnet.org/
++        ETHEREUM_JSONRPC_WS_URL: wss://devservice.lestnet.org:8888/
 +        CHAIN_ID: '21363'
  
    visualizer:
